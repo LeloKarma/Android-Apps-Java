@@ -5,44 +5,42 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private Button button;
+    private LinearLayout mainLayout; // Reference to the main layout
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Call your custom button listener method
-        myButtonListenerMethod();
-    }
+        // Initialize views
+        Button button = findViewById(R.id.button);
+        mainLayout = findViewById(R.id.main_layout); // Assuming 'main_layout' is the ID of your main layout
 
-    // Custom method to set the button click listener
-    private void myButtonListenerMethod() {
-        button = findViewById(R.id.button);
+        // Set button click listener
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Toggle the background color of the button
+                // Toggle the background color of the main layout
                 toggleBackgroundColor();
             }
         });
     }
 
-    // Method to toggle the background color of the button
+    // Method to toggle the background color of the main layout
     private void toggleBackgroundColor() {
+        // Get the current background color of the main layout
+        int currentColor = ((ColorDrawable) mainLayout.getBackground()).getColor();
 
-        ColorDrawable bgDrawable = (ColorDrawable) button.getBackground();
-        int currentColor = bgDrawable.getColor();
 
-        // Toggle between red and blue background colors
         if (currentColor == Color.RED) {
-            button.setBackgroundColor(Color.BLUE);
+            mainLayout.setBackgroundColor(Color.BLUE);
         } else {
-            button.setBackgroundColor(Color.RED);
+            mainLayout.setBackgroundColor(Color.RED);
         }
     }
 }
