@@ -1,5 +1,6 @@
 package com.example.butonapp;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     public void myButtonListenerMethod() {
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 // Get the current background color of the RelativeLayout
